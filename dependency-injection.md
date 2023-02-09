@@ -71,8 +71,8 @@ public class Main {
 
 This is the tough coupling. The ```Employee``` class is coupled with the specific implementation of the ```Phone``` 
 interface. If we want to have the opportunity to decide which ```Phone``` implementation to choose when creating the
-```Employee``` object we can apply the dependency injection pattern. This way, we can inject the desired implementation in 
-different ways, for instance using the constructor or a setter. Now, let's update the ```Employee``` class this way:
+```Employee``` object we can apply the dependency injection pattern. This way, we can inject the desired implementation 
+into the ```Employee``` object in different ways, for instance using the constructor or a setter. Now, let's update the ```Employee``` class this way:
 
 ```
 public class Employee {
