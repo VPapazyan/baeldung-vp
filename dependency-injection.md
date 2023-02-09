@@ -1,4 +1,4 @@
-Dependency injection is a design pattern aimed at avoiding __tight coupling__ in a code. 
+Dependency injection is a design pattern that helps us avoid __tight coupling__ in a code. 
 It removes the dependencies of specific implementations and makes the code more flexible. 
 Before exploring the idea of dependency injection, let's see what we mean by tight coupling. 
 Assume you have such an ```Employee``` class:
@@ -51,8 +51,9 @@ public class OfficePhone implements Phone {
 }
 ```
 
-This implementation has one issue, we hardcoded the ```Phone``` implementation and the phone number inside the ```Employee```
-class constructor. Whenever we create an Employee object and invoke the ```displayPhoneNumber()``` method it will print the same output:
+This ```Employee``` implementation has one issue, we hardcoded the ```Phone``` implementation inside the ```Employee```
+class constructor. Every time we create an ```Employee``` object and invoke the ```displayPhoneNumber()``` method it 
+will print the same output:
 
 ```
 public class Main {
@@ -60,16 +61,18 @@ public class Main {
         Employee vahram = new Employee();
         Employee shayleigh = new Employee();
 
+        // Prints My home number is +37410203040
         vahram.getPhone().displayPhoneNumber("+37410203040");
+        // Prints My home number is +37460708090
         shayleigh.getPhone().displayPhoneNumber("+37460708090");
     }
 }
 ```
 
-This is the tough coupling. The ```Employee``` class is coupled with the specific implementation of the ```Phone``` interface.
-If we don't want to have the opportunity to choose which ```Phone``` implementation to choose we can apply the dependency 
-injection pattern. This way, we can inject the desired implementation in different ways, for instance 
-using the constructor or a setter. Let's update the ```Employee``` class this way:
+This is the tough coupling. The ```Employee``` class is coupled with the specific implementation of the ```Phone``` 
+interface. If we want to have the opportunity to decide which ```Phone``` implementation to choose when creating the
+```Employee``` object we can apply the dependency injection pattern. This way, we can inject the desired implementation in 
+different ways, for instance using the constructor or a setter. Now, let's update the ```Employee``` class this way:
 
 ```
 public class Employee {
@@ -89,8 +92,8 @@ public class Employee {
 }
 ```
 
-Here we don't specify any implementation and can decide which implementation(dependency) to "inject" into the ```Employee``` class
-by switching between different implementations. This is what they call a __loose coupling__. 
+Here we don't specify any implementation and can decide which implementation(dependency) to "inject" into the 
+```Employee``` constructor by switching between different implementations. This is what they call a __loose coupling__. 
 After applying the dependency injection we can have a ```Main``` class like this:
 
 ```
@@ -107,6 +110,6 @@ public class Main {
 
 There are two different ```Employee``` objects injected with different ```Phone``` implementations. 
 
-With this simple code sample, you can understand that such an approach not only gives you freedom of choice and 
+With this code sample, you can understand that such an approach not only gives you freedom of choice and 
 makes the code reusable but also brings benefits when testing the application since you can easily create mock 
 objects and inject them into your tests. This is why you should use the dependency injection pattern.
