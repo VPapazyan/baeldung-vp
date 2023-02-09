@@ -53,7 +53,7 @@ public class OfficePhone implements Phone {
 
 This ```Employee``` implementation has one issue, we hardcoded the ```Phone``` implementation inside the ```Employee```
 class constructor. Every time we create an ```Employee``` object and invoke the ```displayPhoneNumber()``` method it 
-will print the same output:
+will print the output using the ```HomePhone``` object:
 
 ```
 public class Main {
